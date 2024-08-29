@@ -1,5 +1,5 @@
 <h3> Project Description</h3>
-<p>This application is an Online Grocery Shopping website developed using HTML, CSS, Bootstrap, PHP, JQuery, AJAX and MAMP. Admin and Customer modules are implemented. Admin can manage the goods as well as users online. Customer can check goods details, search and filter goods and manage shopping cart. Sessions, soft delete, pagination and inventory management features are implemented.</p>
+<p> Hi! I am Lakshman and this application is an Online Grocery Shopping website developed using HTML, CSS, Bootstrap, PHP, JQuery, AJAX and MAMP. Admin and Customer modules are implemented. Admin can manage the goods as well as users online. Customer can check goods details, search and filter goods and manage shopping cart. Sessions, soft delete, pagination and inventory management features are implemented.</p>
 <p>This project has been divided in to two modules namely admin module and 
 customer/user module. 
 <h4>Administrator </h4>
