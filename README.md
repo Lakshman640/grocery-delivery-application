@@ -24,4 +24,4 @@ order is placed, details of the products purchased will be stored in the databas
 an order has been placed, cart gets cleared and user can place next order. All the orders 
 placed by a customer can be viewed in order history. </p></p>
 <br>
-<h3> Team Members</h3>
+
