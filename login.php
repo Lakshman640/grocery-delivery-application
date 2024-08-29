@@ -13,26 +13,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
   if(empty($_POST["password"]) || empty($_POST["username"]))
    {
 	 $emailErr="password is missing";   
-     header("location:login1.html");
+     header("location:index.php");
      exit();
     }
    else
    {
      $username=test_input($_POST['username']);
      $password=test_input($_POST['password']);
-     if($username=="admin")
-     {
-		 $_SESSION['name']=admin;
-           session_write_close();
-            echo "Admin";  
-     }
-     else
-     {
-		 
 	 $salt="yughkjhbgvbhj";
      $password=md5($password.$salt);
-	 
-	 $conn=mysqli_connect("localhost","root","root","grocery1");
+	 $conn=mysqli_connect("localhost","root","root","Project");
 	 if(!conn)
       {
          echo "Failed to connect".mysqli_connect_err();
@@ -42,10 +32,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
          $query="SELECT * FROM users WHERE username='$username' AND password='$password'";
          $result=mysqli_query($conn,$query);
          if(mysqli_num_rows($result)!=0)
-	 { 
-           
+	 {
            $userData=mysqli_fetch_assoc($result);
-           $_SESSION['name']=$userData['username'];
+           $_SESSION['name']=$userData["FirstName"];
            session_write_close();
             echo "Login successful";
 	 }
@@ -54,7 +43,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		 echo "Login unsuccessful";
 	 }
    }
-}
 }
 }
 ?>

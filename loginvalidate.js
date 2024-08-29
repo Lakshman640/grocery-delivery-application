@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 $("#username").focus(function(){
 $("#username").removeClass("error").removeClass("ok");
 if($("#pwd").val()){
@@ -13,7 +14,7 @@ else{
 $("#pwd").removeClass("error").removeClass("ok").removeClass("info");
 $("span").remove();
 }
-$("#username").after("<span class='info'></span>");
+$("#username").after("<span class='info'>The username field must contain only alphabetical or numeric characters</span>");
 });
 /*Password function*/
 $("#pwd").focus(function(){
@@ -21,7 +22,7 @@ $("#pwd").removeClass("error").removeClass("ok");
 $("span").remove();
 if($("#username").val()){
 var input=$("#username");
-var validinput=/^[a-zA-Z0-9 ]*$/;
+var validinput=/^[a-zA-Z0-9]*$/;
 var is_username=validinput.test(input.val());
 if(!is_username){
 $("#username").after("<span class='error'>Username is not in alphanumeric format</span>");
@@ -30,44 +31,32 @@ $("#username").after("<span class='error'>Username is not in alphanumeric format
 else{
 $("#username").removeClass("error").removeClass("ok").removeClass("info");
 }
-$("#pwd").after("<span class='info'></span>");
+$("#pwd").after("<span class='info'>The password field should be at least 8 characters long.</span>");
 });
-$("#s1").click(function(event){
-event.preventDefault();
+$("#submit").click(function(){
 $("span").remove();
-var uname=$("#username").val();
-var pwd=$("#pwd").val();
-if(uname=="" || pwd=="")
+if($("#username").val()=="")
 {
- if(uname=="")
- {
-    $("#username").after("<span class='error'>Username should be provided</span>");
- }
- if(pwd=="")
- {
-    $("#pwd").after("<span class='error'>Password should be provided</span>");
- }
+$("#username").after("<span class='error'>Username should be provided.</span>");
+}
+if($("#pwd").val()=="")
+{
+$("#pwd").after("<span class='error'>Password should be provided.</span>");
 }
 else
 {
+$username=$("#username").val();
+$pwd=$("#pwd").val();
 $.ajax({
-  url: "login.php",
-  type: "POST",
-  data: {username:uname,password:pwd},
-  success:function(data){
-  if(data=="Login successful")
-  {
-    window.location.href="profile.php";  
-  }
-  else if(data=="Admin")
-  {
-	  window.location.href="adminfinal.php";
-  }
-  else
-  {
-	  alert("Username/password are invalid");
-  }
-  }
+type:"post",
+url:"login.php",
+data:{name:username},
+success:function(response){
+if(response=="ok")
+{
+alert("success");
+}
+}
 });
 }
 });
